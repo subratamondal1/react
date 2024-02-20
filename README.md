@@ -399,3 +399,45 @@ export default ListGroup;
 | **Purpose**    | Configure component behavior based on external data                                                                                                                  | Manage dynamic data and behavior within a component                                                  |
 | **Use cases**  | Displaying dynamic content based on parent data, triggering actions in parent based on child interactions, sharing reusable UI components with configurable behavior | Maintaining user input, handling conditional rendering based on internal data, managing side effects |
 | **Examples**   | Passing item data to a list component, passing a callback function to handle form submission                                                                         | Tracking selected item index in a list, managing form validation errors                              |
+
+### Passing Children
+
+Children are elements nested within a component's JSX tag. They become a special prop named `children` accessible within the component. Passing children allows for flexible component usage and composition.
+
+```jsx
+// ParentComponent
+import Alert from "./components/Alert";
+function App() {
+  return (
+    <div>
+      <Alert>
+        <p>Subrata Mondal</p>
+      </Alert>
+    </div>
+  );
+}
+
+export default App;
+```
+
+In the above notice that our custom component `<Alert></Alert>` is having children inside itself `<p></p>`, which is created via the below code:
+
+```jsx
+// ChildComponent
+import type { ReactNode } from "react";
+
+interface Props {
+  // Special Name `children`
+  children: ReactNode;
+}
+
+const Alert = ({ children }: Props) => {
+  return (
+    <div className="m-8 p-8 border-2 bg-orange-200 rounded-lg text-2xl font-bold">
+      {children}
+    </div>
+  );
+};
+
+export default Alert;
+```
