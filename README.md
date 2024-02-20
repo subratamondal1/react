@@ -386,3 +386,16 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
 
 export default ListGroup;
 ```
+
+### Props vs State
+
+| Feature        | Props                                                                                                                                                                | State                                                                                                |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Definition** | Data passed down from parent to child components                                                                                                                     | Data managed within a component                                                                      |
+| **Context**    | Similar to function arguments                                                                                                                                        | Similar to local variables                                                                           |
+| **Mutability** | `Read-only` by child components                                                                                                                                      | `Mutable` within the component                                                                       |
+| **Scope**      | Shared across components that receive the same prop                                                                                                                  | Specific to the component managing the state                                                         |
+| **Lifetime**   | Defined once and passed down during render                                                                                                                           | Can change over time based on user interactions or other events                                      |
+| **Purpose**    | Configure component behavior based on external data                                                                                                                  | Manage dynamic data and behavior within a component                                                  |
+| **Use cases**  | Displaying dynamic content based on parent data, triggering actions in parent based on child interactions, sharing reusable UI components with configurable behavior | Maintaining user input, handling conditional rendering based on internal data, managing side effects |
+| **Examples**   | Passing item data to a list component, passing a callback function to handle form submission                                                                         | Tracking selected item index in a list, managing form validation errors                              |
