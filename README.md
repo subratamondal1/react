@@ -441,3 +441,28 @@ const Alert = ({ children }: Props) => {
 
 export default Alert;
 ```
+
+Note that **`ReactNode`** allows to html elements inside our jsx components.
+
+### Adding Icons
+
+To use icons first install this libraray:
+
+```bash
+npm i react-icons@latest
+```
+
+```jsx
+import { BsFillCalendarFill } from "react-icons/bs";
+function App() {
+  return (
+    <>
+      <BsFillCalendarFill
+        color="orange"
+        size={50}></BsFillCalendarFill>
+    </>
+  );
+}
+
+export default App;
+```
