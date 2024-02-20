@@ -5,7 +5,7 @@
 </p>
 
 
-# `Create React App with Vite`
+## `Create React App with Vite`
 ```bash
 1. npm create vite@latest
 ```
@@ -46,4 +46,33 @@ Now execute this command one by one two run your app:
 
 Go to the local host to see your app up and running: `Vite + React Logo with a Counter`.
 
+## `Folder structure created by Vite`
+```bash
+react-app
+├── README.md
+├── index.html # APP's Entry Point and contains the Container of our APP (#root)
+├── package-lock.json
+├── package.json # Information of our project
+├── node_modules # all the 3rd party libraries like react are installed here
+│   └── ...
+├── public # contains all the public assets like images, logos
+│   └── vite.svg
+├── src # source code of our APP
+│   ├── App.css
+│   ├── App.tsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
+
+Whenever there is a change in your app, vite automatically updates the changes via **hmr** means `hot reload module`.
+
+```bash
+[vite] hmr update /src/App.tsx (x12)
+```
 
