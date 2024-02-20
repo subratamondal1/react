@@ -202,3 +202,42 @@ Handling events is a crucial aspect of creating interactive UIs in React.
 ```jsx
 <button onClick={() => console.log("Clicked")}></button>
 ```
+
+### Managing State using Hooks
+
+- Hooks are functions that let you "hook into" state and other React features from functional components.
+- They start with the name `use`, followed by a descriptive name (e.g., `useState`, `useEffect`).
+- You cannot use hooks inside loops, conditions, or nested functions. They must be called at the top level of your functional component.
+
+**Managing State using useState Hook:**
+
+The `useState` hook is one of the most essential hooks for managing state in functional components. Here's how it works:
+
+**Syntax:** `const [state, setState] = useState(initialState);`
+
+- `state`: The current state value (can be a number, string, object, etc.).
+- `setState`: A function used to update the state value.
+- `initialState`: The initial value of the state (optional).
+
+**Example:**
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+}
+```
+
+- The `count` variable holds the current state value, initially set to 0.
+- The `setCount` function is used to update the state value.
+- Clicking the button triggers the `handleClick` function, which increments the count and updates the state using `setCount`.
