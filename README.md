@@ -81,9 +81,7 @@ Whenever there is a change in your app, vite automatically updates the changes v
 
 ## `Building Components with React`
 
-Building components with React is a fundamental aspect of creating user interfaces for web applications.
-
-- Components are **Reusable UI** building blocks
+Building components with React is a fundamental aspect of creating user interfaces for web applications. Components are **Reusable UI** building blocks
 
 ### How to build components
 
@@ -165,7 +163,6 @@ function ListGroup() {
   }
   return (
     <>
-      {items.length === 0 && <p>Items not found</p>}
       {items.length === 0 && displayMessage()}
       <ul className="m-8 space-y-8 rounded-lg border-2 border-fuchsia-600 p-8">
         {items.map((item) => (
@@ -181,4 +178,27 @@ function ListGroup() {
 }
 
 export default ListGroup;
+```
+
+Here, depending on the value of `items.length`, the message will be displayed by the function `displayMessage()`.
+
+### Handling Events
+
+Handling events is a crucial aspect of creating interactive UIs in React.
+
+**Event Handlers:**
+
+- React events are named in camelCase (e.g., `onClick`, `onMouseOver`).
+- You define event handlers as functions passed as props to elements.
+- The event handler function typically receives an event object (`event`) as an argument, containing information about the event.
+
+**Common Event Handlers:**
+
+- `onClick`: Triggered when an element is clicked.
+- `onChange`: Triggered when the value of an input element changes (e.g., typing in a text box).
+- `onSubmit`: Triggered when a form is submitted.
+- `onMouseOver` and `onMouseOut`: Triggered when the mouse enters or leaves an element.
+
+```jsx
+<button onClick={() => console.log("Clicked")}></button>
 ```
