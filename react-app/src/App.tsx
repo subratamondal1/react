@@ -1,9 +1,11 @@
 import ListGroup from "./components/ListGroup";
 function App() {
+  const items = ["Kolkata", "Mumbai", "Bangalore", "Pune"];
   return (
     <>
-      <h1 className="text-5xl text-center">List</h1>
-      <ListGroup></ListGroup>
+      <ListGroup
+        items={items}
+        heading="Cities"></ListGroup>
     </>
   );
 }

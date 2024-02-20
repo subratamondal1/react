@@ -241,3 +241,87 @@ function Counter() {
 - The `count` variable holds the current state value, initially set to 0.
 - The `setCount` function is used to update the state value.
 - Clicking the button triggers the `handleClick` function, which increments the count and updates the state using `setCount`.
+
+### Passing Data via `Props`
+
+Passing data between components in React is crucial for building dynamic and interactive applications. The preferred way to achieve this is by using **props**, which act as communication channels between parent and child components.
+
+**1. Passing `Props` from Parent to Child:**
+
+- **Syntax:**
+  ```jsx
+  <ChildComponent
+    propName="value"
+    anotherProp={someObject}
+  />
+  ```
+- The data you want to pass is specified as `key-value` pairs within the parent component's JSX tag.
+- The keys (`propName`, `anotherProp`) become props accessible within the child component.
+
+**2. Receiving Props in the Child Component:**
+
+- **Syntax:**
+  ```jsx
+  function ChildComponent({ propName, anotherProp }) {
+    // Access prop values using destructuring
+    return (
+      <div>
+        {/* Use prop values here: */}
+        <p>Received prop: {propName}</p>
+      </div>
+    );
+  }
+  ```
+- The child component receives props as an object named `props` by default.
+- Destructuring within the function arguments allows you to access individual props directly.
+
+```jsx
+// ParentComponent
+import ListGroup from "./components/ListGroup";
+function App() {
+  const items = ["Kolkata", "Mumbai", "Bangalore", "Pune"];
+  return (
+    <>
+      <ListGroup
+        items={items}
+        heading="Cities"></ListGroup>
+    </>
+  );
+}
+
+export default App;
+```
+
+```jsx
+// ChildComponent
+import { useState } from "react";
+
+interface Props {
+  items: string[];
+  heading: string;
+}
+
+function ListGroup({ items, heading }: Props) {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  return (
+    <>
+      <h1 className="text-5xl text-center">{heading}</h1>
+      <ul className="m-8 space-y-8 rounded-lg border-2 border-fuchsia-600 p-8">
+        {items.map((item, index) => (
+          <li
+            key={item}
+            onClick={() => {
+              setSelectedIndex(index);
+              console.log(selectedIndex);
+            }}
+            className="border-b-2 p-2 text-xl font-bold active:bg-red-300">
+            {item.toUpperCase()}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+export default ListGroup;
+```

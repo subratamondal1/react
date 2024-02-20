@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-function ListGroup() {
-  const items = ["Kolkata", "Mumbai", "Bangalore", "Pune"];
-  const [selectedIndex, setSelectedIndex] = useState(-1);
-  // selectedIndex; // contains the state itself (the variable)
-  // setSelectedIndex; // updater function that updates the state
+interface Props {
+  items: string[];
+  heading: string;
+}
 
+function ListGroup({ items, heading }: Props) {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
     <>
+      <h1 className="text-5xl text-center">{heading}</h1>
       <ul className="m-8 space-y-8 rounded-lg border-2 border-fuchsia-600 p-8">
         {items.map((item, index) => (
           <li
