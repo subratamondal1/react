@@ -325,3 +325,64 @@ function ListGroup({ items, heading }: Props) {
 
 export default ListGroup;
 ```
+
+### Passing Function via `Props`
+
+Passing functions as props in React allows you to send functionality down from parent components to their child components. This enables dynamic behavior and communication between different parts of your application.
+
+```jsx
+// ParentComponent
+import ListGroup from "./components/ListGroup";
+function App() {
+  const items = ["Kolkata", "Mumbai", "Bangalore", "Pune"];
+  const handleSelectItem = (item: string) => {
+    console.log(item);
+  };
+  return (
+    <>
+      <ListGroup
+        items={items}
+        heading="Cities"
+        onSelectItem={handleSelectItem}></ListGroup>
+    </>
+  );
+}
+
+export default App;
+```
+
+```jsx
+// ChildComponent
+import { useState } from "react";
+
+interface Props {
+  items: string[];
+  heading: string;
+  onSelectItem: (item: string) => void;
+}
+
+function ListGroup({ items, heading, onSelectItem }: Props) {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  return (
+    <>
+      <h1 className="text-5xl text-center">{heading}</h1>
+      <ul className="m-8 space-y-8 rounded-lg border-2 border-fuchsia-600 p-8">
+        {items.map((item, index) => (
+          <li
+            key={item}
+            onClick={() => {
+              setSelectedIndex(index);
+              console.log(selectedIndex);
+              onSelectItem(item);
+            }}
+            className="border-b-2 p-2 text-xl font-bold active:bg-red-300">
+            {item.toUpperCase()}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+export default ListGroup;
+```
