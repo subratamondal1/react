@@ -1,6 +1,12 @@
+import { FormEvent } from "react";
 function Form() {
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    console.log("Submitted");
+  };
   return (
     <form
+      onSubmit={handleSubmit}
       action=""
       className="text-center">
       <div className="border-fuchsia-100">
