@@ -1,12 +1,9 @@
 import { useState } from "react";
 function App() {
-  const [bugs, setBug] = useState([
-    { id: 1, title: "Bug1", fixed: false },
-    { id: 2, title: "Bug2", fixed: false },
-  ]);
+  const [tags, setTags] = useState(["Happy", "Cheerful"]);
   const handleClick = () => {
-    setBug(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
-    console.log(bugs);
+    setTags([...tags, "Exciting"]);
+    console.log(tags);
   };
   return (
     <>
