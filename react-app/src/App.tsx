@@ -1,21 +1,18 @@
 import { useState } from "react";
-import { produce } from "immer";
 function App() {
-  const [bugs, setBugs] = useState([
-    { id: 1, title: "Bug1", fixed: false },
-    { id: 2, title: "Bug2", fixed: false },
-  ]);
+  const [customer, setCustomer] = useState({
+    name: "Subrata",
+    address: {
+      city: "Jangipur",
+      zipcode: 700018,
+    },
+  });
   const handleClick = () => {
-    setBugs(
-      produce((draft) => {
-        const bug = draft.find( ( bug ) => bug.id === 1 );
-        if ( bug )
-        {
-          bug.fixed = true
-        }
-      })
-    );
-    console.log(bugs);
+    setCustomer({
+      ...customer,
+      address: { ...customer.address, zipcode: 742213 },
+    });
+    console.log(customer);
   };
   return (
     <>
