@@ -1,9 +1,21 @@
 import { useState } from "react";
+import { produce } from "immer";
 function App() {
-  const [tags, setTags] = useState(["Happy", "Cheerful"]);
+  const [bugs, setBugs] = useState([
+    { id: 1, title: "Bug1", fixed: false },
+    { id: 2, title: "Bug2", fixed: false },
+  ]);
   const handleClick = () => {
-    setTags([...tags, "Exciting"]);
-    console.log(tags);
+    setBugs(
+      produce((draft) => {
+        const bug = draft.find( ( bug ) => bug.id === 1 );
+        if ( bug )
+        {
+          bug.fixed = true
+        }
+      })
+    );
+    console.log(bugs);
   };
   return (
     <>
