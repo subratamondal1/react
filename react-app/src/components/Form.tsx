@@ -1,8 +1,17 @@
-import { FormEvent } from "react";
+import { FormEvent, useRef } from "react";
 function Form() {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const ageRef = useRef<HTMLInputElement>(null);
+  const person = { name: "", age: 0 };
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log("Submitted");
+    if (nameRef.current !== null) {
+      person.name = nameRef.current.value;
+    }
+    if (ageRef.current !== null) {
+      person.age = parseInt(ageRef.current.value);
+    }
+    console.log(person);
   };
   return (
     <form
@@ -16,6 +25,7 @@ function Form() {
           Name
         </label>
         <input
+          ref={nameRef}
           id="name"
           type="text"
           className="border-2 border-fuchsia-200 p-2 mx-4 rounded-lg"
@@ -28,6 +38,7 @@ function Form() {
           Age
         </label>
         <input
+          ref={ageRef}
           id="age"
           type="number"
           className="border-2 border-fuchsia-200 p-2 mx-4 rounded-lg"
