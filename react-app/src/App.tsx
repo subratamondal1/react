@@ -1,20 +1,12 @@
 import { useState } from "react";
 function App() {
-  const [cart, setCart] = useState({
-    discount: 0.1,
-    items: [
-      { id: 1, title: "Product 1", quantity: 10 },
-      { id: 2, title: "Product 2", quantity: 5 },
-    ],
-  });
+  const [bugs, setBug] = useState([
+    { id: 1, title: "Bug1", fixed: false },
+    { id: 2, title: "Bug2", fixed: false },
+  ]);
   const handleClick = () => {
-    setCart({
-      ...cart,
-      items: cart.items.map((item) =>
-        item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item
-      ),
-    });
-    console.log(cart);
+    setBug(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
+    console.log(bugs);
   };
   return (
     <>
