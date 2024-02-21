@@ -6,6 +6,7 @@ function Form() {
   });
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+    console.log(person);
   };
   return (
     <form
@@ -21,7 +22,6 @@ function Form() {
         <input
           onChange={(event) => {
             setPerson({ ...person, name: event.target.value });
-            console.log(person);
           }}
           value={person.name}
           id="name"
